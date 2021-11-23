@@ -1,0 +1,135 @@
+<!-- Jinja Template derived from Bootstrap base template -->
+{% extends "bootstrap/base.html" %}
+<!-- Tooltip Title -->
+{% block title %}Movies{% endblock %}
+{% block head %}
+    <!-- Preserve yhe style of the base template -->
+    {{ super() }}
+    <!-- Include Bootstrap CSS Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- In page styling - Background Image, Bootstrap Elements and Pagination elements -->
+    <style>
+        /* body::before{
+            background: url("https://miro.medium.com/max/720/0*UjBJ_iTNESi6Zevk.jpg") no-repeat center center/cover;
+            content: "";
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.9;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+         }   */
+        body {
+            background-image: url("https://miro.medium.com/max/720/0*UjBJ_iTNESi6Zevk.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        th, td{
+            font-size: 25px;
+        }
+        .custom{
+            height: 60vh;
+            margin-bottom: 25px;
+        }
+    </style>
+
+{% endblock %}
+<!-- Navigation bar -->
+{% block navbar %}
+<div class="navbar navbar-expand-sm bg-dark navbar-dark" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <!-- Inline styling of Home navigation (Home link resets the page to default) -->
+                <li class="nav-item"><a class="nav-link mx-3" style="font-size: 2em" href="{{ url_for('movies') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" style="font-size: 2em" href="{{ url_for('history') }}">History</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" style="font-size: 2em" href="{{ url_for('recent_searches') }}">Recent Searches</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" style="font-size: 2em" href="{{ url_for('recommended_movies') }}">Recommended Movies</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" style="font-size: 2em" href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Preserve scripts of base template -->
+    {{ super() }}
+    <!-- Include Bootstrap and jQuery scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Presentation Logic -->
+    <div class="container mt-3 table-responsive custom">
+        
+    <!-- Inline styling of page heading -->
+    <h1 style="text-align: center; background-color: floralwhite;color: maroon; font-size: 30px"> Recent Searches!!!</h1>
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Recent Searches</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in keywords %}
+          <tr>
+            <td>{{ i[0] }}</td>
+          </tr>
+          
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Presentation Logic -->
+    <div class="container mt-3 table-responsive custom">
+        
+    <!-- Inline styling of page heading -->
+    <h1 style="text-align: center; background-color: floralwhite;color: maroon; font-size: 30px"> Genres Searched!!!</h1>
+      <table class="table table-dark table-hover" style="height: 20px;">
+        <thead>
+          <tr>
+            <th>Genres</th>
+            <tH>Searches</th>            
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr><td>Action</td><td>{{Action}}</td></tr>
+            <tr><td>Adventure</td><td>{{Adventure}}</td></tr>
+            <tr><td>Animated</td><td>{{Animated}}</td></tr>
+            <tr><td>Biography</td><td>{{Biography}}</td></tr>
+            <tr><td>Comedy</td><td>{{Comedy}}</td></tr>
+            <tr><td>Crime</td><td>{{Crime}}</td></tr>
+            <tr><td>Disaster</td><td>{{Disaster}}</td></tr>
+            <tr><td>Documentary</td><td>{{Documentary}}</td></tr>
+            <tr><td>Drama</td><td>{{Drama}}</td></tr>
+            <tr><td>Family</td><td>{{Family}}</td></tr>
+            <tr><td>Fantasy</td><td>{{Fantasy}}</td></tr>
+            <tr><td>Horror</td><td>{{Horror}}</td></tr>
+            <tr><td>Musical</td><td>{{Musical}}</td></tr>
+            <tr><td>Mystery</td><td>{{Mystery}}</td></tr>
+            <tr><td>Romance</td><td>{{Romance}}</td></tr>
+            <tr><td>Science_Fiction</td><td>{{Science_Fiction}}</td></tr>
+            <tr><td>Short</td><td>{{Short}}</td></tr>
+            <tr><td>Sports</td><td>{{Sports}}</td></tr>
+            <tr><td>Spy</td><td>{{Spy}}</td></tr>
+            <tr><td>Superhero</td><td>{{Superhero}}</td></tr>
+            <tr><td>Teen</td><td>{{Teen}}</td></tr>
+            <tr><td>Thriller</td><td>{{Thriller}}</td></tr>
+            <tr><td>War</td><td>{{War}}</td></tr>
+            <tr><td>Western</td><td>{{Western}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+{% endblock %}
